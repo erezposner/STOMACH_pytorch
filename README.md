@@ -1,4 +1,3 @@
-```markdown
 # S3M: Statistical 3D Stomach Shape Model (PyTorch)
 
 This is an implementation of **S3M** in PyTorch. S3M is a statistical shape model of the stomach built from a dataset of 3D scans, designed to capture natural anatomical variability in a low-dimensional shape space. The model offers an efficient and expressive representation of stomach anatomy for research and clinical applications.
