@@ -10,7 +10,7 @@ S3M is a lightweight model that encapsulates the diverse anatomical variations o
 
 ## Installation
 
-The code uses **Python 3.9** and has been tested on PyTorch 1.4.
+The code uses **Python 3.9** and has been tested on PyTorch 1.13.
 
 ### Setup S3M PyTorch Virtual Environment
 
