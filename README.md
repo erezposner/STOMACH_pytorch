@@ -22,7 +22,7 @@ conda activate stomach_pytorch
 ### Clone the Project and Install Requirements
 
 ```shell
-git clone https://github.com/erezposner/S3M_PyTorch
+git clone https://github.com/erezposner/STOMACH_pytorch
 cd S3M_PyTorch
 pip install poetry
 poetry install
