@@ -1,16 +1,9 @@
-import copy
-import os
-from itertools import islice
-from pathlib import Path
-import argparse
+
 import pickle
 from typing import Dict, List, Union
 import matplotlib.pyplot as plt
-import open3d as o3d
 import numpy as np
 from sklearn import preprocessing
-from sklearn.decomposition import PCA
-from scipy.spatial import KDTree
 import torch
 
 
@@ -63,9 +56,7 @@ class DPCA:
             plt.ylabel("Cumulative Explained Variance Ratio")
             plt.title("Principal Components vs. Explained Variance Ratio")
 
-    def fit(self, vertices: torch.Tensor, kwargs: Dict = {}) -> None:
-        normalized_vertices = self.preprocess(vertices)
-        self._fit_sklearn_pca(normalized_vertices, kwargs)
+
 
     def flatten_data(self, vertices: np.array, number_of_observations: int):
         return np.reshape(vertices, (number_of_observations, -1))
@@ -75,16 +66,6 @@ class DPCA:
         normalized_vertices = scaler.transform(flatten_vertices)
         return normalized_vertices
 
-    def _fit_sklearn_pca(self, normalized_vertices: np.array, kwargs: Dict):
-        svd_solver = kwargs.get("svd_solver", "randomized")
-        pca = PCA(
-            n_components=self.num_comp, svd_solver=svd_solver
-        )  # Initialize PCA object
-        pca.fit(normalized_vertices)  # Fit PCA on vertices
-        self.explained_variance_ratio_ = pca.explained_variance_ratio_
-        self.num_comp = pca.n_components_
-        self.update_eigens(pca.explained_variance_, pca.components_.T)
-        self.__eigens_to_torch()
 
     def __eigens_to_torch(self):
         self.eigen_values = torch.tensor(
@@ -102,22 +83,8 @@ class DPCA:
     def update_vertices_mean(self, vertices_mean: np.array):
         self.avg_mesh_vertices = vertices_mean
 
-    def update_eigens(self, e_values: np.array, e_vectors: np.array):
-        self.eigen_values = e_values
-        self.eigen_vectors = e_vectors
 
-    def save_metadata(self, filename: str):
-        with open(filename, "wb") as handle:
-            pickle.dump(
-                (
-                    self.avg_mesh_vertices.cpu().numpy(),
-                    self.eigen_values.cpu().numpy(),
-                    self.eigen_vectors.cpu().numpy(),
-                    self.num_comp,
-                ),
-                handle,
-                protocol=pickle.HIGHEST_PROTOCOL,
-            )
+
 
     def load_metadata(self, filename: str):
         with open(filename, "rb") as handle:
@@ -200,27 +167,6 @@ class DPCA:
             )
 
 
-def down_sample_indices(mesh_list: List, voxel_size=0.9):
-    downsampled_pcd = mesh_list[0].voxel_down_sample(voxel_size)
-    tree = KDTree(np.array(mesh_list[0].points))
-    # Find the indices of points in array2 closest to points in array1
-    v, indices = tree.query(np.array(downsampled_pcd.points))
-    return indices
-
-
-def update_points(pcl, indices):
-    pcl.points = o3d.utility.Vector3dVector(np.asarray(pcl.points)[indices])
-    return pcl
-
-
-def find_files_recursively(directory, pattern, num_files=None):
-    file_generator = Path(directory).rglob(pattern)
-    file_iterator = islice(file_generator, num_files) if num_files else file_generator
-    files = [str(file) for file in file_iterator]
-    return files
-
-
-import pyvista as pv
 
 
 def delete_meshes_with_anomal_triangles(meshes_list: np.ndarray):

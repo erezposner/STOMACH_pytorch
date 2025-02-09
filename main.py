@@ -99,7 +99,7 @@ def DPCA_main_default_arguments() -> argparse.Namespace:
     )
 
     parser.add_argument(
-        "--n_comp", type=int, default=100, help="Number of components for PCA"
+        "--n_comp", type=int, default=10, help="Number of components for PCA, maximum is 100"
     )
 
     parser.add_argument(
