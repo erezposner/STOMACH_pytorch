@@ -3,7 +3,7 @@
 This is an implementation of **S3M** in PyTorch. S3M is a statistical shape model of the stomach built from a dataset of 3D scans, designed to capture natural anatomical variability in a low-dimensional shape space. The model offers an efficient and expressive representation of stomach anatomy for research and clinical applications.
 
 <p align="center"> 
-  <img src="gifs/model_variations.gif">
+  <img src="images/model_variations.jpg">
 </p>
 
 S3M is a lightweight model that encapsulates the diverse anatomical variations observed in the stomach. By leveraging accurate alignments from 3D scans, the model facilitates advanced analysis and simulation of stomach morphology.
@@ -58,7 +58,3 @@ When using this code or model in a scientific publication, please cite:
 }
 ```
 
-## Acknowledgements
-
-This repository is built with inspiration from previous work on statistical shape modeling and incorporates modifications from related projects.
-```
