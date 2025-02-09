@@ -15,8 +15,8 @@ The code uses **Python 3.9** and has been tested on PyTorch 1.4.
 ### Setup S3M PyTorch Virtual Environment
 
 ```shell
-python3.7 -m venv <your_home_dir>/.virtualenvs/S3M_PyTorch
-source <your_home_dir>/.virtualenvs/S3M_PyTorch/bin/activate
+conda create -n stomach_pytorch python=3.9
+conda activate stomach_pytorch
 ```
 
 ### Clone the Project and Install Requirements
@@ -24,8 +24,8 @@ source <your_home_dir>/.virtualenvs/S3M_PyTorch/bin/activate
 ```shell
 git clone https://github.com/erezposner/S3M_PyTorch
 cd S3M_PyTorch
-python setup.py install
-mkdir model
+pip install poetry
+poetry install
 ```
 
 ## Demo
