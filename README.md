@@ -47,7 +47,11 @@ Stomach pipeline generation operation parameters with their respective ranges an
 The detailed parameter table is available here:  
 [pipeline_parameters.csv](images/pipeline_parameters.csv)
 
+The template mesh creation is shown here: ![pipeline_shape_types.gif](images%2Fpipeline_shape_types.gif)
+the pipeline interactive mode enables interpolating between different morphologies as well as condition on dimensional parameters, including Greater Curvature length (GC), Lesser Curvature length (LC), and the stomach volume.
+![pipeline_shape_types.gif](images%2Fpipeline_shape_types.gif)
 
+Multiple synthetic stomach variation are visualized here: ![synthetic_data.gif](images%2Fsynthetic_data.gif)
 ## License
 
 S3M is available under the [Creative Commons Attribution license](https://creativecommons.org/licenses/by/4.0/). By using the model or the code, you acknowledge that you have read and agree to the license terms. If you do not agree with these terms and conditions, you must not use the code.
