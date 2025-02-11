@@ -37,6 +37,16 @@ Run the following command from the terminal to load S3M and visualize the 3D sha
 ```shell
 python main.py
 ```
+## Synthetic Dataset
+dataset will be published soon!
+### Stomach Pipeline Generation
+
+#### Pipeline parameters details
+Stomach pipeline generation operation parameters with their respective ranges and descriptions.
+
+The detailed parameter table is available here:  
+[pipeline_parameters.csv](images/pipeline_parameters.csv)
+
 
 ## License
 
