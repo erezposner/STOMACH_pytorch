@@ -47,7 +47,7 @@ Stomach pipeline generation operation parameters with their respective ranges an
 The detailed parameter table is available here:  
 [pipeline_parameters.csv](images/pipeline_parameters.csv)
 
-The template mesh creation is shown here: ![pipeline_shape_types.gif](images%2Fpipeline_shape_types.gif)
+The template mesh creation is shown here: ![template_mesh.gif](images%2Ftemplate_mesh.gif)
 the pipeline interactive mode enables interpolating between different morphologies as well as condition on dimensional parameters, including Greater Curvature length (GC), Lesser Curvature length (LC), and the stomach volume.
 ![pipeline_shape_types.gif](images%2Fpipeline_shape_types.gif)
 
